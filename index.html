@@ -1,21 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Happy Valentine's Day ❤️</title>
+  <meta charset="UTF-8">
+  <title>Happy Valentine’s Day ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1>Happy Valentine’s Day ❤️</h1>
-<p>You are my favorite person in the world.</p>
 
-<img src="images/us1.jpg">
-<img src="images/us2.jpg">
+<p>
+  Every memory with you is something I want to hold onto forever.
+  So I made this little book of us — because you’re my favorite story.
+</p>
+
+<!-- Photobook -->
+<div class="photo-book">
+  <div class="photo rotate-left">
+    <img src="images/us1.jpg" alt="Us">
+  </div>
+
+  <div class="photo rotate-slight">
+    <img src="images/us2.jpg" alt="Us">
+  </div>
+
+  <div class="photo rotate-right">
+    <img src="images/us3.jpg" alt="Us">
+  </div>
+</div>
+
+<!-- Music -->
+<button class="music-btn" onclick="playMusic()">Play our song 🎶</button>
+
+<audio id="bg-music" loop>
+  <source src="music/just_the_two_of_us.mp3" type="audio/mpeg">
+</audio>
 
 <br>
 
 <button onclick="location.href='quiz.html'">Take the Love Quiz 💌</button>
-<button onclick="location.href='fotos.html'">Our Photo Book 📖</button>
+<button onclick="location.href='photos.html'">Our Photo Book 📖</button>
+
+<script>
+  const music = document.getElementById("bg-music");
+
+  function playMusic() {
+    music.play();
+  }
+</script>
 
 </body>
 </html>
