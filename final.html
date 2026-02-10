@@ -1,23 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>I Love You ❤️</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>I Love You ❤️</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1>I Love You ❤️</h1>
-
 <p>
-  Thank you for being you.
+  Thank you for being you.  
   For loving me, supporting me, and making my life brighter every day.
 </p>
+<p>I choose you — today, tomorrow, and always.</p>
 
-<p>
-  I choose you — today, tomorrow, and always.
-</p>
+<div class="photo-book">
+  <div class="photo rotate-left"><img src="images/us1.jpeg" alt="Us"></div>
+</div>
 
-<img src="images/us1.jpg">
+<script>
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{ heart.remove(); }, 7000);
+  }
+  setInterval(createHeart, 600);
+
+  // Music
+  const music = new Audio('music/just_the_two_of_us.mp3');
+  music.loop = true;
+  if(localStorage.getItem("musicPlaying")==="true"){ music.play(); }
+
+  // Page fade
+  function goTo(page){
+    document.body.style.opacity=0;
+    setTimeout(()=>{ window.location.href=page; },500);
+  }
+</script>
 
 </body>
 </html>
