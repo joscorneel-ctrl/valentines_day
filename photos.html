@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Our Memories 💕</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Our Memories 💕</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1>Our Memories 💕</h1>
 
-<p>
-  Every picture is a reminder of how lucky I am to have you.
-</p>
+<p>Every picture is a reminder of how lucky I am to have you.</p>
 
-<img src="images/att(1).jpeg">
-<img src="images/IMG_3543.jpeg">
-<img src="images/IMG_3955.jpeg">
+<div class="photo-book">
+  <div class="photo rotate-left"><img src="images/us1.jpeg" alt="Us"></div>
+  <div class="photo rotate-slight"><img src="images/us2.jpeg" alt="Us"></div>
+  <div class="photo rotate-right"><img src="images/us3.jpeg" alt="Us"></div>
+</div>
 
-<br>
-<button onclick="location.href='index.html'">Back Home 🏠</button>
+<button onclick="goTo('index.html')">Back Home 🏠</button>
+
+<script>
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{ heart.remove(); }, 7000);
+  }
+  setInterval(createHeart, 600);
+
+  // Music continuation
+  const music = new Audio('music/just_the_two_of_us.mp3');
+  music.loop = true;
+  if(localStorage.getItem("musicPlaying")==="true"){ music.play(); }
+
+  function goTo(page){
+    document.body.style.opacity=0;
+    setTimeout(()=>{ window.location.href=page; },500);
+  }
+</script>
 
 </body>
 </html>
-
-
-
