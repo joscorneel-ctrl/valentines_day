@@ -17,39 +17,63 @@
 <!-- Photobook -->
 <div class="photo-book">
   <div class="photo rotate-left">
-    <img src="images/att(1).jpeg" alt="Us">
+    <img src="images/us1.jpeg" alt="Us">
   </div>
-
   <div class="photo rotate-slight">
-    <img src="images/IMG_3543.jpeg" alt="Us">
+    <img src="images/us2.jpeg" alt="Us">
   </div>
-
   <div class="photo rotate-right">
-    <img src="images/IMG_3955.jpeg" alt="Us">
+    <img src="images/us3.jpeg" alt="Us">
   </div>
 </div>
 
 <!-- Music -->
-<button class="music-btn" onclick="playMusic()">Play our song 🎶</button>
-
+<button class="music-btn" onclick="toggleMusic()">Play our song 🎶</button>
 <audio id="bg-music" loop>
   <source src="music/just_the_two_of_us.mp3" type="audio/mpeg">
 </audio>
 
 <br>
 
-<button onclick="location.href='quiz.html'">Take the Love Quiz 💌</button>
-<button onclick="location.href='photos.html'">Our Photo Book 📖</button>
+<button onclick="goTo('quiz.html')">Take the Love Quiz 💌</button>
+<button onclick="goTo('photos.html')">Our Photo Book 📖</button>
 
 <script>
   const music = document.getElementById("bg-music");
 
-  function playMusic() {
+  // Continue music across pages
+  if(localStorage.getItem("musicPlaying") === "true"){
     music.play();
+  }
+
+  function toggleMusic(){
+    if(music.paused){
+      music.play();
+      localStorage.setItem("musicPlaying", "true");
+    } else {
+      music.pause();
+      localStorage.setItem("musicPlaying", "false");
+    }
+  }
+
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{ heart.remove(); }, 7000);
+  }
+  setInterval(createHeart, 600);
+
+  // Page transitions
+  function goTo(page){
+    document.body.style.opacity = 0;
+    setTimeout(()=>{ window.location.href = page; }, 500);
   }
 </script>
 
 </body>
 </html>
-
-
